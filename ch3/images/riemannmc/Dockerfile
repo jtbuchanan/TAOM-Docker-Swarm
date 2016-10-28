@@ -15,6 +15,8 @@ RUN apt-get update && apt-get install -y \
 	&& gem2.0 install --no-ri --no-rdoc riemann-tools \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+COPY riemann.config_riemannmc /etc/riemann/riemann.config
+COPY email.clj /etc/riemann/examplecom/etc/email.clj
 EXPOSE 5556 5556/udp 5555 5555/udp
 ENTRYPOINT ["riemann"]
 CMD ["/etc/riemann/riemann.config"]

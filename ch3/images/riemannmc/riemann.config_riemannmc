@@ -17,7 +17,7 @@
     (default :ttl 60
       ; Index all events immediately.
       index
-
+      #(info %)
       (expired
         (throttle 1 120
           (where (service #"^riemann.*"

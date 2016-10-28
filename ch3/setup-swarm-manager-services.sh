@@ -30,6 +30,7 @@ docker swarm init --advertise-addr $privateIp:2377 --listen-addr $privateIp:2377
 
 docker build -t img_riemanna images/riemanna
 docker build -t img_riemannb images/riemannb 
+docker build -t img_riemannmc images/riemannmc
 
 # Create an overlay network 
 docker network create --driver overlay TAOM-Network
@@ -37,3 +38,4 @@ docker network create --driver overlay TAOM-Network
 # Create docker services
 docker service create --name riemanna --replicas 1 --network TAOM-Network img_riemanna
 docker service create --name riemannb --replicas 1 --network TAOM-Network img_riemannb  
+docker service create --name riemannmc --replicas 1 --network TAOM-Network img_riemannmc
